@@ -1,0 +1,37 @@
+<div id="sidenav-demo-container">
+    <saf-side-nav class="navbar" [state]="show()" aria-label="Side navigation" close-aria-label="Collapse side nav"
+        open-svg-name="arrow-right-from-line" close-svg-name="arrow-left-from-line">
+
+        <saf-menu-item id="dashboard-menu-item"><saf-icon icon-name="objects-column"
+                slot="start"></saf-icon>Dashboard</saf-menu-item>
+        <saf-menu-item id="home-menu-item"><saf-icon icon-name="house" slot="start"></saf-icon>Home</saf-menu-item>
+        <saf-menu-item id="browse-menu-item"><saf-icon icon-name="file-magnifying-glass"
+                slot="start"></saf-icon>Browse</saf-menu-item>
+        <saf-menu-item id="time-billing-menu-item"><saf-icon icon-name="clock" slot="start"></saf-icon>Time and
+            billing</saf-menu-item>
+        <saf-menu-item id="tools-menu-item"><saf-icon icon-name="pen-ruler"
+                slot="start"></saf-icon>Tools</saf-menu-item>
+        <saf-menu-item id="reports-menu-item"><saf-icon icon-name="chart-simple"
+                slot="start"></saf-icon>Reports</saf-menu-item>
+        <saf-menu-item id="folders-menu-item"><saf-icon icon-name="folder"
+                slot="start"></saf-icon>Folders</saf-menu-item>
+        <saf-menu-item id="history-menu-item"><saf-icon icon-name="clock-rotate-left"
+                slot="start"></saf-icon>History</saf-menu-item>
+        <saf-menu-item id="manage-staff-menu-item" has-link="true" url="https://google.com"><saf-icon
+                icon-name="sitemap" slot="start"></saf-icon>Manage staff<saf-icon slot="end" appearance="solid"
+                icon-name="external-link"></saf-icon><saf-sr-only>opens in new tab</saf-sr-only></saf-menu-item>
+        <saf-menu-item id="settings-menu-item"><saf-icon icon-name="gear-complex"
+                slot="start"></saf-icon>Settings</saf-menu-item>
+        <saf-tooltip anchor="dashboard-menu-item" placement="right">Dashboard</saf-tooltip>
+        <saf-tooltip anchor="home-menu-item" placement="right">Home</saf-tooltip>
+        <saf-tooltip anchor="browse-menu-item" placement="right">Browse</saf-tooltip>
+        <saf-tooltip anchor="time-billing-menu-item" placement="right">Time and billing</saf-tooltip>
+        <saf-tooltip anchor="tools-menu-item" placement="right">Tools</saf-tooltip>
+        <saf-tooltip anchor="reports-menu-item" placement="right">Reports</saf-tooltip>
+        <saf-tooltip anchor="folders-menu-item" placement="right">Folders</saf-tooltip>
+        <saf-tooltip anchor="history-menu-item" placement="right">History</saf-tooltip>
+        <saf-tooltip anchor="manage-staff-menu-item" placement="right">Manage staff (opens new tab)</saf-tooltip>
+        <saf-tooltip anchor="settings-menu-item" placement="right">Settings</saf-tooltip>
+
+    </saf-side-nav>
+</div>
