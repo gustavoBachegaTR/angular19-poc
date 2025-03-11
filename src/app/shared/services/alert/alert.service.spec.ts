@@ -1,7 +1,7 @@
 import { TestBed } from "@angular/core/testing";
 import { AlertService } from "./alert.service";
 import { CreateDomElementService } from "../create-dom-element/create-dom-element.service";
-import { EAlertMessage } from "./alert-messages";
+import { EAlertMessage } from "../../../ui-messages/alert-messages";
 
 describe('AlertService', () => {
     let service: AlertService;
@@ -29,10 +29,21 @@ describe('AlertService', () => {
         moqCreateDomElement.createComponent.and.returnValue({
             close: (ms: number | undefined) => {
                 console.log('closed')
-            }, 
+            },
             instance: {} as any
         })
-        service.show(EAlertMessage.DefaultMessage, 1000);
+        service.show(EAlertMessage.DefaultMessage, { default: 'test' }, 1000);
+        expect(moqCreateDomElement.createComponent).toHaveBeenCalled();
+    });
+
+    it('should call createComponent when show with duration by default', () => {
+        moqCreateDomElement.createComponent.and.returnValue({
+            close: (ms: number | undefined) => {
+                console.log('closed')
+            },
+            instance: {} as any
+        })
+        service.show(EAlertMessage.DefaultMessage, { default: 'test' });
         expect(moqCreateDomElement.createComponent).toHaveBeenCalled();
     });
 
@@ -40,12 +51,25 @@ describe('AlertService', () => {
         moqCreateDomElement.createComponent.and.returnValue({
             close: (ms: number | undefined) => {
                 console.log('closed')
-            }, 
+            },
             instance: {} as any
         })
         service.showMessage({
             appearance: 'error', message: 'error'
         }, 1000);
+        expect(moqCreateDomElement.createComponent).toHaveBeenCalled();
+    });
+
+    it('should call createComponent and send parameters when showMessage with duration by default', () => {
+        moqCreateDomElement.createComponent.and.returnValue({
+            close: (ms: number | undefined) => {
+                console.log('closed')
+            },
+            instance: {} as any
+        })
+        service.showMessage({
+            appearance: 'error', message: 'error'
+        });
         expect(moqCreateDomElement.createComponent).toHaveBeenCalled();
     });
 });

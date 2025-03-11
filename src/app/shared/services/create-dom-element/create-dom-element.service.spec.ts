@@ -1,64 +1,18 @@
 import { TestBed } from '@angular/core/testing';
-import { ApplicationRef, Component, inject, TemplateRef } from '@angular/core';
+import { ApplicationRef } from '@angular/core';
 import { CreateDomElementService } from './create-dom-element.service';
 import { AlertComponent } from '../../components/alert/alert.component';
 
 
-@Component({
-    template: `<div>Test Component</div><div #template>Template</div>
-    <button type="button" class="test-1" (click)="openModal(modalTest)">Open Default Modal</button>
-    <div #alertHere></div>
-    <button type="button" class="test-2" (click)="openModal(modalTest, alertHere)">Open Modal</button>
-    <button type="button" class="test-3" (click)="openComponent(alertHere)">Open Default Modal from component</button>
-    <button type="button" class="test-4" (click)="openComponent()">Open Modal from component</button>
-    <ng-template #modalTest>
-        <div class="modal">
-        Hello world
-        </div>
-    </ng-template>
-    `,
-    providers: [CreateDomElementService]
-})
-class TestComponent {
-    createDomElementService = inject(CreateDomElementService);
-    test!: string;
-
-    openModal(template: TemplateRef<any>, placeToShow?: HTMLElement) {
-        let templateHtml;
-        if (placeToShow) {
-            templateHtml = this.createDomElementService.createTemplate(template, placeToShow);
-        } else {
-            templateHtml = this.createDomElementService.createTemplate(template);
-        }
-        templateHtml.close(5000);
-    }
-
-    openComponent(placeToShow?: HTMLElement) {
-        let component;
-        if (placeToShow) {
-            component = this.createDomElementService.createComponent(AlertComponent, {
-                message: 'Hi, I\'m a toast'
-            }, placeToShow);
-        } else {
-            component = this.createDomElementService.createComponent(AlertComponent, {
-                message: 'Hi, I\'m a toast'
-            });
-        }
-        component.close(5000);
-    }
-
-}
-
 describe('CreateDomElementService', () => {
   let service: CreateDomElementService;
-  let appRefSpy: jasmine.SpyObj<ApplicationRef>;
 
   beforeEach(() => {
 
     TestBed.configureTestingModule({
       providers: [
         CreateDomElementService,
-        ApplicationRef, 
+        ApplicationRef,
       ]
     });
 
@@ -82,6 +36,68 @@ describe('CreateDomElementService', () => {
       expect(result[1]).toBeTrue();
       expect(document.body.contains(result[0])).toBeTrue();
       document.body.removeChild(result[0]); // Cleanup
+    });
+  });
+
+  describe('createTemplate', () => {
+    it('should create template by default', () => {
+      const htmlTemplate = document.createElement('div');
+      htmlTemplate.innerText = 'Hello test'
+      const moqTemplateRef = jasmine.createSpyObj('TemplateRef', ['createEmbeddedView'])
+      const moqEmbeddedViewRef = jasmine.createSpyObj('EmbeddedViewRef', ['attachToAppRef', 'destroy', 'detachFromAppRef'], {
+        rootNodes: [
+          htmlTemplate
+        ]
+      });
+      moqTemplateRef.createEmbeddedView.and.returnValue(moqEmbeddedViewRef);
+      const response = service.createTemplate(moqTemplateRef);
+      response.close();
+      
+      expect(moqTemplateRef.createEmbeddedView).toHaveBeenCalled();
+    });
+
+    it('should create template in specific place', () => {
+      const htmlTemplate = document.createElement('div');
+      htmlTemplate.innerText = 'Hello test'
+      const templateToShow = document.createElement('div');
+      templateToShow.innerText = 'Hello template'
+      const moqTemplateRef = jasmine.createSpyObj('TemplateRef', ['createEmbeddedView', ])
+      const moqEmbeddedViewRef = jasmine.createSpyObj('EmbeddedViewRef', ['attachToAppRef', 'destroy', 'detachFromAppRef'], {
+        rootNodes: [
+          htmlTemplate
+        ]
+      });
+      moqTemplateRef.createEmbeddedView.and.returnValue(moqEmbeddedViewRef);
+      const response = service.createTemplate(moqTemplateRef, templateToShow);
+      response.close();
+      
+      expect(moqTemplateRef.createEmbeddedView).toHaveBeenCalled();
+    })
+  });
+
+  describe('createComponent', () => {
+    it('should create component by default', () => {
+      const context = {
+        message: 'Hello test',
+        appearance: 'success'
+      }
+      const response = service.createComponent(AlertComponent, context as any);
+      response.close();
+      expect(response.close).toBeTruthy();
+      expect(response.instance).toBeTruthy();
+    });
+
+    it('should create component with template to show', () => {
+      const templateToShow = document.createElement('div');
+      templateToShow.innerText = 'Hello template'
+      const context = {
+        message: 'Hello test',
+        appearance: 'success'
+      }
+      const response = service.createComponent(AlertComponent, context as any, templateToShow);
+      response.close();
+      expect(response.close).toBeTruthy();
+      expect(response.instance).toBeTruthy();
     });
   });
 

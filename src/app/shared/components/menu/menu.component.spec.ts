@@ -1,26 +1,3 @@
-/* import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { MenuComponent } from './menu.component';
-
-describe('MenuComponent', () => {
-  let component: MenuComponent;
-  let fixture: ComponentFixture<MenuComponent>;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [MenuComponent]
-    })
-    .compileComponents();
-
-    fixture = TestBed.createComponent(MenuComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-}); */
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MenuComponent } from './menu.component';
 import { GeneralItem } from '../../models/general-item';
@@ -34,7 +11,7 @@ describe('MenuComponent', () => {
     TestBed.configureTestingModule({
       declarations: [],
       imports:[MenuComponent],
-      schemas: [NO_ERRORS_SCHEMA] // Avoid errors from non-Angular elements
+      schemas: [NO_ERRORS_SCHEMA]
     }).compileComponents();
 
     fixture = TestBed.createComponent(MenuComponent);
@@ -42,7 +19,7 @@ describe('MenuComponent', () => {
     fixture.detectChanges();
   });
 
-  // Mock the general items input
+  
   const mockItems: GeneralItem[] = [
     { id: 1, text: 'Item 1' },
     { id: 2, text: 'Item 2' }
