@@ -1,17 +1,20 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { SafAlert, SafFooter, SafMenuItem, SafProductHeader, SafSearchField, SafSideNav, SafSrOnly, SafTooltip } from '@saffron/core-components';
+
+SafSideNav();
+SafMenuItem();
+SafTooltip();
+SafFooter();
+SafProductHeader();
+SafSrOnly();
+SafSearchField();
+SafAlert();
 
 @Component({
   selector: 'app-root',
-  template: `<div class="container">
-  <nav class="nav">
-    <a routerLink="/login">Login</a>
-    <a routerLink="/account">Account</a>
-  </nav>
-</div>
-
-<router-outlet />`,
+  templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   imports: [RouterModule]
 })
-export class AppComponent {}
+export class AppComponent { }
