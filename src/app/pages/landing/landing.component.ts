@@ -2,7 +2,7 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA, inject } from '@angular/core';
 import { MenuComponent } from '../../shared/components/menu/menu.component';
 import { GeneralItem } from '../../shared/models/general-item';
 import { AlertService } from '../../shared/services/alert/alert.service';
-import { EAlertMessage } from '../../shared/services/alert/alert-messages';
+import { EAlertMessage } from '../../ui-messages/alert-messages';
 import { SafAppearance } from '../../shared/types/saf-appearance';
 
 @Component({
@@ -46,6 +46,8 @@ export class LandingComponent {
 
   onSearch(event: any): void {
     console.log('event', event)
-    this.alertService.show(EAlertMessage.DefaultMessage);
+    this.alertService.show(EAlertMessage.DefaultMessage, {
+      default: 'default param'
+    });
   }
 }
