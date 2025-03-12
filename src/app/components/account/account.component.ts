@@ -1,8 +1,8 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit, TemplateRef, ViewChild } from '@angular/core';
-import { DataService } from '../../shared/services/data.service';
+import { DataService } from '@shared/services/data.service';
 import { RouterModule } from '@angular/router';
 import { WjGridModule } from '@grapecity/wijmo.angular2.grid';
-import { CommonGridComponent } from '../../shared/components/common-grid/common-grid.component';
+import { CommonGridComponent } from '@shared/components/common-grid/common-grid.component';
 
 @Component({
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

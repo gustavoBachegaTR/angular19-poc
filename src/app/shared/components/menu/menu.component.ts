@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, CUSTOM_ELEMENTS_SCHEMA, EventEmitter, Input, model, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
-import { GeneralItem } from '../../models/general-item';
+import { GeneralItem } from '@shared/models/general-item';
 
 @Component({
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

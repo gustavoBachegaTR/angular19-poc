@@ -1,9 +1,9 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA, inject } from '@angular/core';
-import { MenuComponent } from '../../shared/components/menu/menu.component';
-import { GeneralItem } from '../../shared/models/general-item';
-import { AlertService } from '../../shared/services/alert/alert.service';
-import { EAlertMessage } from '../../ui-messages/alert-messages';
-import { SafAppearance } from '../../shared/types/saf-appearance';
+import { MenuComponent } from '@shared/components/menu/menu.component';
+import { GeneralItem } from '@shared/models/general-item';
+import { AlertService } from '@shared/services/alert/alert.service';
+import { EAlertMessage } from '@app/ui-messages/alert-messages';
+import { SafAppearance } from '@shared/types/saf-appearance';
 
 @Component({
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
