@@ -1,0 +1,111 @@
+<form class="create-update-account-form">
+  <saf-text-field
+    #firmNameInput
+    label="Firm name"
+    formControlName="firmName"
+    [required]="true"
+    name="firmName"
+    (input)="onValueChange({ event: $event, minLength: 3, maxLength: 40 })"
+    [attr.invalid]="formErrors.hasOwnProperty('firmName')"
+    [attr.validation-message]="formErrors['firmName']"
+  ></saf-text-field>
+  <saf-text-field
+    #accountUserPrefixInput
+    label="Account user prefix"
+    [required]="true"
+    name="AccountUserPrefix"
+    (input)="
+      onValueChange({
+        event: $event,
+        minLength: 2,
+        maxLength: 20,
+        isOnlyAlphaNumeric: true,
+      })
+    "
+    [attr.invalid]="formErrors.hasOwnProperty('AccountUserPrefix')"
+    [attr.validation-message]="formErrors['AccountUserPrefix']"
+  ></saf-text-field>
+  <saf-text-field
+    #unitNumberInput
+    label="Unit number"
+    name="UnitNumber"
+    (change)="unitNumberExists($event)"
+    (input)="
+      onValueChange({
+        event: $event,
+        minLength: 8,
+        maxLength: 20,
+        isOnlyAlphaNumeric: true,
+      })
+    "
+    [attr.invalid]="formErrors.hasOwnProperty('UnitNumber')"
+    [attr.validation-message]="formErrors['UnitNumber']"
+  ></saf-text-field>
+  <saf-text-field
+    #platformAccountNumberInput
+    label="Platform account number"
+    name="PlatformAccountNumber"
+    (input)="
+      onValueChange({
+        event: $event,
+        minLength: 2,
+        maxLength: 20,
+        isOnlyAlphaNumeric: true,
+      })
+    "
+    [attr.invalid]="formErrors.hasOwnProperty('PlatformAccountNumber')"
+    [attr.validation-message]="formErrors['PlatformAccountNumber']"
+  ></saf-text-field>
+
+  <saf-select
+    #accountTypeSelect
+    density="inherit"
+    label="Account type"
+    name="AccountType"
+    [attr.invalid]=""
+    aria-invalid="false"
+    [required]="true"
+    select-aria-label=""
+  >
+    <saf-listbox-option value="0" selected> unassigned </saf-listbox-option>
+    <saf-listbox-option value="1">internal</saf-listbox-option>
+    <saf-listbox-option value="2">ria customer</saf-listbox-option>
+    <saf-listbox-option value="3">westlaw customer</saf-listbox-option>
+    <saf-listbox-option value="4">student</saf-listbox-option>
+    <saf-listbox-option value="5"> HR-Divested to West </saf-listbox-option>
+    <saf-listbox-option value="6"> Inactive External </saf-listbox-option>
+    <saf-listbox-option value="7">RIA &amp; West</saf-listbox-option>
+    <saf-listbox-option value="8"> IPAccount - Internal </saf-listbox-option>
+    <saf-listbox-option value="9">IPAccount - RG</saf-listbox-option>
+    <saf-listbox-option value="10">IPAccount - West</saf-listbox-option>
+    <saf-listbox-option value="11"> IPAccount - RG/West </saf-listbox-option>
+    <saf-listbox-option value="12">Token - Internal</saf-listbox-option>
+    <saf-listbox-option value="13">Token - RG</saf-listbox-option>
+    <saf-listbox-option value="14">Token - West</saf-listbox-option>
+    <saf-listbox-option value="15">Token - RG/West</saf-listbox-option>
+  </saf-select>
+  <saf-select
+    #firmIndicatorSelect
+    density="inherit"
+    label="Firm indicator"
+    value=""
+    invalid="false"
+    aria-invalid="false"
+    select-aria-label=""
+  >
+    <saf-listbox-option value=""></saf-listbox-option>
+    <saf-listbox-option value="p"> Professional </saf-listbox-option>
+    <saf-listbox-option value="e"> Extranet </saf-listbox-option>
+    <saf-listbox-option value="t"> Third party LMS </saf-listbox-option>
+  </saf-select>
+  <saf-text-area
+    #notesInput
+    label="Notes"
+    density="inherit"
+    invalid="false"
+    validation-message="Message here"
+    maxlength="500"
+    show-remaining-text="true"
+  >
+  </saf-text-area>
+</form>

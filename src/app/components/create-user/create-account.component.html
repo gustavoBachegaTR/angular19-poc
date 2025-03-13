@@ -1,0 +1,12 @@
+<app-confirm-cancel-form-container
+  [headerText]="'Create account'"
+  [acceptButtonText]="'Create account'"
+  [cancelButtonText]="'Cancel'"
+  [resetButtonText]="'Reset form'"
+  (accept)="onCreateUser()"
+  (cancel)="onCancel()"
+  (reset)="onReset()"
+  [isFormInvalid]="false"
+  [isProcessing]="false">
+  <app-create-update-user-form></app-create-update-user-form>
+</app-confirm-cancel-form-container>

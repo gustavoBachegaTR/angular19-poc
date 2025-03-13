@@ -1,10 +1,94 @@
 {
   "data": [
-    { "id": 0, "country": "US", "sales": 1318.37, "expenses": 4212.41 },
-    { "id": 1, "country": "Germany", "sales": 5847.95, "expenses": 89.79 },
-    { "id": 2, "country": "UK", "sales": 502.55, "expenses": 2878.50 },
-    { "id": 3, "country": "Japan", "sales": 4675.40, "expenses": 488.65 },
-    { "id": 4, "country": "Italy", "sales": 2117.57, "expenses": 925.60 },
-    { "id": 5, "country": "Greece", "sales": 322.10, "expenses": 4163.96 }
+    {
+      "id": "0",
+      "country": "US",
+      "sales": 1318.37,
+      "expenses": 4212.41
+    },
+    {
+      "id": "1",
+      "country": "Germany",
+      "sales": 5847.95,
+      "expenses": 89.79
+    },
+    {
+      "id": "2",
+      "country": "UK",
+      "sales": 502.55,
+      "expenses": 2878.5
+    },
+    {
+      "id": "3",
+      "country": "Japan",
+      "sales": 4675.4,
+      "expenses": 488.65
+    },
+    {
+      "id": "4",
+      "country": "Italy",
+      "sales": 2117.57,
+      "expenses": 925.6
+    },
+    {
+      "id": "5",
+      "country": "Greece",
+      "sales": 322.1,
+      "expenses": 4163.96
+    }
+  ],
+  "account": [
+    {
+      "id": "38982",
+      "accountCrossReference": null,
+      "accountDomains": [],
+      "accountExt": null,
+      "accountExtInfo": null,
+      "authorizationCode": null,
+      "firmName": "@abcdefg",
+      "groups": [
+        {
+          "id": 52154
+        }
+      ],
+      "name": "1",
+      "notes": null,
+      "riaCustomerNumber": "123asdf",
+      "sapCustomerNumber": null,
+      "sourceInfos": [
+        {
+          "id": 0,
+          "description": "unassigned",
+          "notes": null
+        }
+      ],
+      "startDate": "2016-05-09T13:54:49-05:00",
+      "status": {
+        "id": 1,
+        "code": 1,
+        "description": "Active"
+      },
+      "siteAdmin": " ",
+      "sourceInfo": " ",
+      "totalOrders": 0,
+      "totalUsers": 0,
+      "supportsIpOverrideToken": null
+    },
+    {
+      "firmName": "asfsfdg",
+      "name": "Daniel",
+      "riaCustomerNumber": "123asdfg",
+      "sapCustomerNumber": "",
+      "sourceInfos": [
+        {
+          "id": 10
+        }
+      ],
+      "accountExt": {
+        "accountType": "T"
+      },
+      "notes": "",
+      "id": "5774363"
+    }
   ]
 }

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { SafAlert, SafFooter, SafMenuItem, SafProductHeader, SafSearchField, SafSideNav, SafSrOnly, SafText, SafTooltip } from '@saffron/core-components';
+import { SafAlert, SafButton, SafFooter, SafListboxOption, SafMenuItem, SafProductHeader, SafSearchField, SafSelect, SafSideNav, SafSrOnly, SafText, SafTextarea, SafTextfield, SafToolbar, SafTooltip } from '@saffron/core-components';
 
 SafSideNav();
 SafMenuItem();
@@ -11,6 +11,12 @@ SafSrOnly();
 SafSearchField();
 SafAlert();
 SafText();
+SafToolbar();
+SafButton();
+SafTextfield();
+SafSelect();
+SafListboxOption();
+SafTextarea();
 
 @Component({
   selector: 'app-root',
