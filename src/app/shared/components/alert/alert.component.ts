@@ -1,6 +1,6 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { Subject } from 'rxjs';
-import { SafAppearance } from '../../types/saf-appearance';
+import { SafAppearance } from '@shared/types/saf-appearance';
 
 @Component({
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

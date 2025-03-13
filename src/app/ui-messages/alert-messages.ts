@@ -1,4 +1,4 @@
-import { AlertComponent } from "../shared/components/alert/alert.component";
+import { AlertComponent } from "@shared/components/alert/alert.component";
 
 export enum EAlertMessage {
     DefaultMessage

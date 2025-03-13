@@ -1,7 +1,7 @@
 import { inject, Injectable } from "@angular/core";
-import { CreateDomElementService } from "../create-dom-element/create-dom-element.service";
-import { AlertMessage, EAlertMessage, alertMessages } from "../../../ui-messages/alert-messages";
-import { AlertComponent } from "../../components/alert/alert.component";
+import { CreateDomElementService } from "@shared/services/create-dom-element/create-dom-element.service";
+import { AlertMessage, EAlertMessage, alertMessages } from "@app/ui-messages/alert-messages";
+import { AlertComponent } from "@shared/components/alert/alert.component";
 
 @Injectable()
 export class AlertService {
