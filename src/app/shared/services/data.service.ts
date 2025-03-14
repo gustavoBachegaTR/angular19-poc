@@ -26,7 +26,7 @@ export class DataService {
   }
 
   createAccount(account: Partial<Account>): Observable<Account> {
-    account.id = Math.floor(Math.random() * 1000);
+    account.id = Math.floor(Math.random() * 1000).toString();
     console.log(account.id);
     return this.http.post<Account>(`${this.apiUrl}/account`, account);
   }

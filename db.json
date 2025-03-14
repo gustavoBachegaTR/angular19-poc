@@ -77,7 +77,7 @@
     {
       "firmName": "asfsfdg",
       "name": "Daniel",
-      "riaCustomerNumber": "123asdfg",
+      "riaCustomerNumber": "123456789",
       "sapCustomerNumber": "",
       "sourceInfos": [
         {
@@ -89,6 +89,38 @@
       },
       "notes": "",
       "id": "5774363"
+    },
+    {
+      "firmName": "DanielTest22",
+      "name": "DanPrfx",
+      "riaCustomerNumber": "12345678",
+      "sapCustomerNumber": "",
+      "sourceInfos": [
+        {
+          "id": 0
+        }
+      ],
+      "accountExt": {
+        "accountType": ""
+      },
+      "notes": "",
+      "id": "258"
+    },
+    {
+      "id": "116",
+      "firmName": "Daniel Test 3",
+      "name": "DanTest3",
+      "riaCustomerNumber": "76543210",
+      "sapCustomerNumber": "wsdfdsfgfd",
+      "sourceInfos": [
+        {
+          "id": 13
+        }
+      ],
+      "accountExt": {
+        "accountType": "E"
+      },
+      "notes": "Testing notes"
     }
   ]
 }

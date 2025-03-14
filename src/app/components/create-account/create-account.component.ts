@@ -1,17 +1,17 @@
 import { Component } from '@angular/core';
 import { ConfirmCancelFormContainerComponent } from '@shared/components/confirm-cancel-form-container/confirm-cancel-form-container.component';
 import { FormService } from '@shared/services/form/form.service';
-import { Router } from '@angular/router';
 import { ResetFormEnum } from '@shared/models/reset-form';
+import { Router } from '@angular/router';
 import { CreateUpdateAccountFormComponent } from '@app/shared/components/create-update-account-form/create-update-account-form.component';
 
 @Component({
-  selector: 'app-update-account',
+  selector: 'app-create-account',
   imports: [ConfirmCancelFormContainerComponent, CreateUpdateAccountFormComponent],
-  templateUrl: './update-account.component.html',
-  styleUrl: './update-account.component.scss',
+  templateUrl: './create-account.component.html',
+  styleUrl: './create-account.component.scss',
 })
-export class UpdateAccountComponent {
+export class CreateAccountComponent {
   constructor(
     private formService: FormService,
     private router: Router,

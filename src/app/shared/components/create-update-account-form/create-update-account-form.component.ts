@@ -7,31 +7,31 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
-import { FormService } from '../../services/reset-form/form.service';
-import { Subscription, Observable, forkJoin, of } from 'rxjs';
+import { FormService } from '@shared/services/form/form.service';
+import { Subscription, of } from 'rxjs';
 import { filter, switchMap, take, tap } from 'rxjs/operators';
 import {
   SafSelectInstance,
   SafTextAreaInstance,
   SafTextFieldInstance,
 } from '@saffron/core-components';
-import { ResetFormEnum } from '../../models/reset-form';
-import { DataService } from '../../services/data.service';
+import { ResetFormEnum } from '@shared/models/reset-form';
+import { DataService } from '@shared/services/data.service';
 import { ActivatedRoute } from '@angular/router';
 import {
   FormField,
   FormValidationConfig,
-} from '../../models/account/create-update-account.model';
-import { Account } from '../../models/account/account.model';
+} from '@shared/models/account/create-update-account.model';
+import { Account } from '@shared/models/account/account.model';
 
 @Component({
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  selector: 'app-create-update-user-form',
+  selector: 'app-create-update-account-form',
   imports: [],
-  templateUrl: './create-update-user-form.component.html',
-  styleUrl: './create-update-user-form.component.scss',
+  templateUrl: './create-update-account-form.component.html',
+  styleUrl: './create-update-account-form.component.scss',
 })
-export class CreateUpdateUserFormComponent implements OnInit, OnDestroy {
+export class CreateUpdateAccountFormComponent implements OnInit, OnDestroy {
   @Input() isUpdate = false;
 
   // Form fields
@@ -103,12 +103,10 @@ export class CreateUpdateUserFormComponent implements OnInit, OnDestroy {
         )
         .subscribe({
           next: (isUnique) => {
-            console.log(isUnique);
             if (isUnique) {
               this.processFormSubmission();
             } else {
               this.formErrors['UnitNumber'] = 'Unit number must be unique.';
-              console.log(this.formErrors);
             }
           },
           error: (error) => {

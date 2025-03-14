@@ -20,7 +20,7 @@ export interface Status {
 }
 
 export interface Account {
-  id: number;
+  id: string;
   accountCrossReference: string | null;
   accountDomains: any[];
   accountExt: AccountExt | null;
