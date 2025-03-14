@@ -1,9 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LandingComponent } from './landing.component';
-import { MenuComponent } from '../../shared/components/menu/menu.component';
+import { MenuComponent } from '@shared/components/menu/menu.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { AlertService } from '../../shared/services/alert/alert.service';
+import { AlertService } from '@shared/services/alert/alert.service';
 
 describe('LandingComponent', () => {
   let component: LandingComponent;

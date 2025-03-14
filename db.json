@@ -1,10 +1,208 @@
 {
   "data": [
-    { "id": 0, "country": "US", "sales": 1318.37, "expenses": 4212.41 },
-    { "id": 1, "country": "Germany", "sales": 5847.95, "expenses": 89.79 },
-    { "id": 2, "country": "UK", "sales": 502.55, "expenses": 2878.50 },
-    { "id": 3, "country": "Japan", "sales": 4675.40, "expenses": 488.65 },
-    { "id": 4, "country": "Italy", "sales": 2117.57, "expenses": 925.60 },
-    { "id": 5, "country": "Greece", "sales": 322.10, "expenses": 4163.96 }
+    {
+      "id": "0",
+      "country": "US",
+      "sales": 1318.37,
+      "expenses": 4212.41
+    },
+    {
+      "id": "1",
+      "country": "Germany",
+      "sales": 5847.95,
+      "expenses": 89.79
+    },
+    {
+      "id": "2",
+      "country": "UK",
+      "sales": 502.55,
+      "expenses": 2878.5
+    },
+    {
+      "id": "3",
+      "country": "Japan",
+      "sales": 4675.4,
+      "expenses": 488.65
+    },
+    {
+      "id": "4",
+      "country": "Italy",
+      "sales": 2117.57,
+      "expenses": 925.6
+    },
+    {
+      "id": "5",
+      "country": "Greece",
+      "sales": 322.1,
+      "expenses": 4163.96
+    }
+  ],
+  "account": [
+    {
+      "id": "38982",
+      "accountCrossReference": null,
+      "accountDomains": [],
+      "accountExt": null,
+      "accountExtInfo": null,
+      "authorizationCode": null,
+      "firmName": "@abcdefg",
+      "groups": [
+        {
+          "id": 52154
+        }
+      ],
+      "name": "1",
+      "notes": null,
+      "riaCustomerNumber": "123asdf",
+      "sapCustomerNumber": null,
+      "sourceInfos": [
+        {
+          "id": 0,
+          "description": "unassigned",
+          "notes": null
+        }
+      ],
+      "startDate": "2016-05-09T13:54:49-05:00",
+      "status": {
+        "id": 1,
+        "code": 1,
+        "description": "Active"
+      },
+      "siteAdmin": " ",
+      "sourceInfo": " ",
+      "totalOrders": 0,
+      "totalUsers": 0,
+      "supportsIpOverrideToken": null
+    },
+    {
+      "firmName": "asfsfdg",
+      "name": "Daniel",
+      "riaCustomerNumber": "123456789",
+      "sapCustomerNumber": "",
+      "sourceInfos": [
+        {
+          "id": 10
+        }
+      ],
+      "accountExt": {
+        "accountType": "T"
+      },
+      "notes": "",
+      "id": "5774363"
+    },
+    {
+      "firmName": "DanielTest22",
+      "name": "DanPrfx",
+      "riaCustomerNumber": "12345678",
+      "sapCustomerNumber": "",
+      "sourceInfos": [
+        {
+          "id": 0
+        }
+      ],
+      "accountExt": {
+        "accountType": ""
+      },
+      "notes": "",
+      "id": "258"
+    },
+    {
+      "id": "116",
+      "firmName": "Daniel Test 3",
+      "name": "DanTest3",
+      "riaCustomerNumber": "76543210",
+      "sapCustomerNumber": "wsdfdsfgfd",
+      "sourceInfos": [
+        {
+          "id": 13
+        }
+      ],
+      "accountExt": {
+        "accountType": "E"
+      },
+      "notes": "Testing notes"
+    }
+  ],
+  "sourceInfo": [
+    {
+      "id": 0,
+      "description": "unassigned",
+      "notes": null
+    },
+    {
+      "id": 1,
+      "description": "internal",
+      "notes": null
+    },
+    {
+      "id": 2,
+      "description": "ria customer",
+      "notes": null
+    },
+    {
+      "id": 3,
+      "description": "westlaw customer",
+      "notes": null
+    },
+    {
+      "id": 4,
+      "description": "student",
+      "notes": null
+    },
+    {
+      "id": 5,
+      "description": "HR-Divested to West",
+      "notes": null
+    },
+    {
+      "id": 6,
+      "description": "Inactive External",
+      "notes": null
+    },
+    {
+      "id": 7,
+      "description": "RIA & West ",
+      "notes": null
+    },
+    {
+      "id": 8,
+      "description": "IPAccount - Internal",
+      "notes": null
+    },
+    {
+      "id": 9,
+      "description": "IPAccount - RG",
+      "notes": null
+    },
+    {
+      "id": 10,
+      "description": "IPAccount - West",
+      "notes": null
+    },
+    {
+      "id": 11,
+      "description": "IPAccount - RG/West",
+      "notes": null
+    },
+    {
+      "id": 12,
+      "description": "Token - Internal",
+      "notes": null
+    },
+    {
+      "id": 13,
+      "description": "Token - RG",
+      "notes": null
+    },
+    {
+      "id": 14,
+      "description": "Token - West",
+      "notes": null
+    },
+    {
+      "id": 15,
+      "description": "Token - RG/West",
+      "notes": null
+    }
   ]
 }

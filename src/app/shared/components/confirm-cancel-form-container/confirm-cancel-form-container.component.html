@@ -1,0 +1,41 @@
+<div class="container">
+    <!-- Header Section -->
+    <app-common-heading [title]="headerText" [subtitle]="subHeaderText" tertiaryTitle="* Indicates required field"></app-common-heading>
+
+    <div class="form-container">
+        <!-- Form Content Section (projected content) -->
+        <div class="form-content">
+          <ng-content></ng-content>
+        </div>
+      
+        <!-- Button Section -->
+        <saf-toolbar class="form-actions" density="inherit" aria-label="Overview toolbar">
+            <div slot="top-row-start">
+                <saf-button 
+            appearance="primary"
+                  type="button" 
+                  class="btn btn-primary" 
+                  (click)="onAccept()"
+                  [disabled]="isFormInvalid || isProcessing">
+                  {{ acceptButtonText }}
+                </saf-button>
+                
+                <saf-button 
+                    appearance="secondary"
+                    class="btn btn-secondary" 
+                    (click)="onCancel()"
+                    [disabled]="isProcessing">
+                    {{ cancelButtonText }}
+                </saf-button>
+            </div>
+            <div slot="top-row-end">
+                <app-anchor-button 
+                    [buttonText]="resetButtonText" 
+                    (click)="onReset()"
+                    [isDisabled]="isProcessing">
+                </app-anchor-button>
+            </div>
+        </saf-toolbar>
+    </div>
+  
+  </div>

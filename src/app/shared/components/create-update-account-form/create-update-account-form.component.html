@@ -1,0 +1,102 @@
+<form class="create-update-account-form">
+  <saf-text-field
+    #firmNameInput
+    label="Firm name"
+    formControlName="firmName"
+    [required]="true"
+    name="firmName"
+    (input)="onValueChange({ event: $event, minLength: 3, maxLength: 40 })"
+    [attr.invalid]="formErrors.hasOwnProperty('firmName')"
+    [attr.validation-message]="formErrors['firmName']"
+  ></saf-text-field>
+  <saf-text-field
+    #accountUserPrefixInput
+    label="Account user prefix"
+    [required]="true"
+    name="AccountUserPrefix"
+    (input)="
+      onValueChange({
+        event: $event,
+        minLength: 2,
+        maxLength: 20,
+        isOnlyAlphaNumeric: true,
+      })
+    "
+    [attr.invalid]="formErrors.hasOwnProperty('AccountUserPrefix')"
+    [attr.validation-message]="formErrors['AccountUserPrefix']"
+  ></saf-text-field>
+  <saf-text-field
+    #unitNumberInput
+    label="Unit number"
+    name="UnitNumber"
+    [required]="true"
+    (change)="unitNumberExists($event)"
+    (input)="
+      onValueChange({
+        event: $event,
+        minLength: 8,
+        maxLength: 20,
+        isOnlyAlphaNumeric: true,
+      })
+    "
+    [attr.invalid]="formErrors.hasOwnProperty('UnitNumber')"
+    [attr.validation-message]="formErrors['UnitNumber']"
+  ></saf-text-field>
+  <saf-text-field
+    #platformAccountNumberInput
+    label="Platform account number"
+    name="PlatformAccountNumber"
+    [required]="true"
+    (input)="
+      onValueChange({
+        event: $event,
+        minLength: 2,
+        maxLength: 20,
+        isOnlyAlphaNumeric: true,
+      })
+    "
+    [attr.invalid]="formErrors.hasOwnProperty('PlatformAccountNumber')"
+    [attr.validation-message]="formErrors['PlatformAccountNumber']"
+  ></saf-text-field>
+
+  <saf-select
+    #accountTypeSelect
+    density="inherit"
+    label="Account type"
+    name="AccountType"
+    [attr.invalid]=""
+    aria-invalid="false"
+    [required]="true"
+    select-aria-label=""
+  >
+    @for (item of sourceInfo; track item.id) {
+      <saf-listbox-option [value]="item.id" selected>
+        {{ item.description }}
+      </saf-listbox-option>
+    }
+  </saf-select>
+  <saf-select
+    #firmIndicatorSelect
+    density="inherit"
+    label="Firm indicator"
+    value=""
+    invalid="false"
+    aria-invalid="false"
+    select-aria-label=""
+  >
+    <saf-listbox-option value=""></saf-listbox-option>
+    <saf-listbox-option value="p"> Professional </saf-listbox-option>
+    <saf-listbox-option value="e"> Extranet </saf-listbox-option>
+    <saf-listbox-option value="t"> Third party LMS </saf-listbox-option>
+  </saf-select>
+  <saf-text-area
+    #notesInput
+    label="Notes"
+    density="inherit"
+    invalid="false"
+    validation-message="Message here"
+    maxlength="500"
+    show-remaining-text="true"
+  >
+  </saf-text-area>
+</form>

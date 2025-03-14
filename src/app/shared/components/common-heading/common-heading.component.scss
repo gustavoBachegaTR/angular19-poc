@@ -1,0 +1,16 @@
+::ng-deep .common-header-container {
+	background-color: var(--saf-color-background-subtle);
+	border-bottom: var(--saf-line-width-thin) solid var(--saf-color-line-subtle);
+	display: flex;
+	flex-direction: column;
+    gap: .5rem;
+	padding: 1.75rem 1.5rem;
+}
+
+.no-margin {
+	margin: 0;
+}
+
+.common-heading__tertiary {
+    color: var(--saf-color-text-strong);
+}

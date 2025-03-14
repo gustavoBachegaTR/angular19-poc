@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MenuComponent } from './menu.component';
-import { GeneralItem } from '../../models/general-item';
+import { GeneralItem } from '@shared/models/general-item';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('MenuComponent', () => {
