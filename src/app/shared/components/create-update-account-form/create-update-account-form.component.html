@@ -29,6 +29,7 @@
     #unitNumberInput
     label="Unit number"
     name="UnitNumber"
+    [required]="true"
     (change)="unitNumberExists($event)"
     (input)="
       onValueChange({
@@ -45,6 +46,7 @@
     #platformAccountNumberInput
     label="Platform account number"
     name="PlatformAccountNumber"
+    [required]="true"
     (input)="
       onValueChange({
         event: $event,
@@ -67,22 +69,11 @@
     [required]="true"
     select-aria-label=""
   >
-    <saf-listbox-option value="0" selected> unassigned </saf-listbox-option>
-    <saf-listbox-option value="1">internal</saf-listbox-option>
-    <saf-listbox-option value="2">ria customer</saf-listbox-option>
-    <saf-listbox-option value="3">westlaw customer</saf-listbox-option>
-    <saf-listbox-option value="4">student</saf-listbox-option>
-    <saf-listbox-option value="5"> HR-Divested to West </saf-listbox-option>
-    <saf-listbox-option value="6"> Inactive External </saf-listbox-option>
-    <saf-listbox-option value="7">RIA &amp; West</saf-listbox-option>
-    <saf-listbox-option value="8"> IPAccount - Internal </saf-listbox-option>
-    <saf-listbox-option value="9">IPAccount - RG</saf-listbox-option>
-    <saf-listbox-option value="10">IPAccount - West</saf-listbox-option>
-    <saf-listbox-option value="11"> IPAccount - RG/West </saf-listbox-option>
-    <saf-listbox-option value="12">Token - Internal</saf-listbox-option>
-    <saf-listbox-option value="13">Token - RG</saf-listbox-option>
-    <saf-listbox-option value="14">Token - West</saf-listbox-option>
-    <saf-listbox-option value="15">Token - RG/West</saf-listbox-option>
+    @for (item of sourceInfo; track item.id) {
+      <saf-listbox-option [value]="item.id" selected>
+        {{ item.description }}
+      </saf-listbox-option>
+    }
   </saf-select>
   <saf-select
     #firmIndicatorSelect

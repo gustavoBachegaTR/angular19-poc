@@ -4,8 +4,13 @@ import {
   SafTextFieldInstance,
 } from '@saffron/core-components';
 
+export type SafField =
+  | SafTextFieldInstance
+  | SafSelectInstance
+  | SafTextAreaInstance;
+
 export interface FormField {
-  field: SafTextFieldInstance | SafSelectInstance | SafTextAreaInstance;
+  field: SafField;
   error: string;
   required: boolean;
   minLength?: number;
@@ -18,4 +23,16 @@ export interface FormValidationConfig {
   minLength?: number;
   maxLength?: number;
   isOnlyAlphaNumeric?: boolean;
+}
+
+export interface FormFieldValidation {
+  field: SafField;
+  required: boolean;
+  error: string;
+}
+
+export interface SourceInfo {
+  id: number;
+  description: string;
+  notes: string;
 }

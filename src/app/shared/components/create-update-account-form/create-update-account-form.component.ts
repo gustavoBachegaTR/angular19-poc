@@ -22,7 +22,7 @@ import {
   FormField,
   FormValidationConfig,
 } from '@shared/models/account/create-update-account.model';
-import { Account } from '@shared/models/account/account.model';
+import { Account, SourceInfo } from '@shared/models/account/account.model';
 
 @Component({
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -51,12 +51,17 @@ export class CreateUpdateAccountFormComponent implements OnInit, OnDestroy {
   formErrors: { [key: string]: string } = {};
   private subscriptions = new Subscription();
   private accountId: string | null = null;
+  sourceInfo: SourceInfo[] = [];
 
   constructor(
     private formService: FormService,
     private dataService: DataService,
     private route: ActivatedRoute,
-  ) {}
+  ) {
+    this.dataService.getSourceInfo().subscribe((data) => {
+      this.sourceInfo = data;
+    });
+  }
 
   ngOnInit(): void {
     this.initFormSubscriptions();
@@ -343,13 +348,13 @@ export class CreateUpdateAccountFormComponent implements OnInit, OnDestroy {
       },
       {
         field: this.unitNumberInput.nativeElement,
-        error: '',
-        required: false,
+        error: 'Unit number is required',
+        required: true,
       },
       {
         field: this.platformAccountNumberInput.nativeElement,
-        error: '',
-        required: false,
+        error: 'Platform account number is required',
+        required: true,
       },
       {
         field: this.accountTypeSelect.nativeElement,

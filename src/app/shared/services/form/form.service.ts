@@ -1,5 +1,9 @@
 import { Injectable } from '@angular/core';
 import {
+  FormFieldValidation,
+  SafField,
+} from '@app/shared/models/account/create-update-account.model';
+import {
   SafSelectInstance,
   SafTextAreaInstance,
   SafTextFieldInstance,
@@ -27,10 +31,7 @@ export class FormService {
     this.confirmFormSubject.next(formId);
   }
 
-  validateField(
-    field: SafTextFieldInstance | SafSelectInstance | SafTextAreaInstance,
-    isRequired: boolean = false,
-  ): boolean {
+  validateField(field: SafField, isRequired: boolean = false): boolean {
     if (!field) return false;
 
     const isEmpty = !field.value || field.value.trim() === '';
@@ -39,13 +40,7 @@ export class FormService {
     return !isInvalid;
   }
 
-  validateForm(
-    fields: {
-      field: SafTextFieldInstance | SafSelectInstance | SafTextAreaInstance;
-      required: boolean;
-      error: string;
-    }[],
-  ): {
+  validateForm(fields: FormFieldValidation[]): {
     isFormValid: boolean;
     errorFields: Array<{ name: string; error: string }>;
   } {
@@ -116,9 +111,7 @@ export class FormService {
     return { isValid: pattern.test(fieldValue) };
   }
 
-  clearValidation(
-    field: SafTextFieldInstance | SafSelectInstance | SafTextAreaInstance,
-  ): void {
+  clearValidation(field: SafField): void {
     if (field) {
       field.invalid = false;
     }

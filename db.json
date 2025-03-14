@@ -122,5 +122,87 @@
       },
       "notes": "Testing notes"
     }
+  ],
+  "sourceInfo": [
+    {
+      "id": 0,
+      "description": "unassigned",
+      "notes": null
+    },
+    {
+      "id": 1,
+      "description": "internal",
+      "notes": null
+    },
+    {
+      "id": 2,
+      "description": "ria customer",
+      "notes": null
+    },
+    {
+      "id": 3,
+      "description": "westlaw customer",
+      "notes": null
+    },
+    {
+      "id": 4,
+      "description": "student",
+      "notes": null
+    },
+    {
+      "id": 5,
+      "description": "HR-Divested to West",
+      "notes": null
+    },
+    {
+      "id": 6,
+      "description": "Inactive External",
+      "notes": null
+    },
+    {
+      "id": 7,
+      "description": "RIA & West ",
+      "notes": null
+    },
+    {
+      "id": 8,
+      "description": "IPAccount - Internal",
+      "notes": null
+    },
+    {
+      "id": 9,
+      "description": "IPAccount - RG",
+      "notes": null
+    },
+    {
+      "id": 10,
+      "description": "IPAccount - West",
+      "notes": null
+    },
+    {
+      "id": 11,
+      "description": "IPAccount - RG/West",
+      "notes": null
+    },
+    {
+      "id": 12,
+      "description": "Token - Internal",
+      "notes": null
+    },
+    {
+      "id": 13,
+      "description": "Token - RG",
+      "notes": null
+    },
+    {
+      "id": 14,
+      "description": "Token - West",
+      "notes": null
+    },
+    {
+      "id": 15,
+      "description": "Token - RG/West",
+      "notes": null
+    }
   ]
 }

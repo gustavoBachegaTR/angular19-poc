@@ -92,7 +92,10 @@ describe('CreateUpdateAccountFormComponent', () => {
       'isUniqueUnitNumber',
       'createAccount',
       'updateAccount',
+      'getSourceInfo',
     ]);
+
+    dataServiceSpy.getSourceInfo.and.returnValue(of([]));
 
     const activatedRouteMock = {
       params: jasmine.createSpyObj('params', ['pipe']),
@@ -1009,6 +1012,169 @@ describe('CreateUpdateAccountFormComponent', () => {
       (component as any).clearFieldError('FirmName');
 
       expect(component.formErrors).toEqual({ AccountUserPrefix: 'Error 2' });
+    });
+  });
+
+  describe('Form Initialization and Data Loading', () => {
+    it('should load source info on initialization', () => {
+      const mockSourceInfo = [
+        { id: 1, description: 'Source 1' },
+        { id: 2, description: 'Source 2' }
+      ];
+      dataService.getSourceInfo.and.returnValue(of(mockSourceInfo));
+      
+      fixture.detectChanges();
+      
+      expect(dataService.getSourceInfo).toHaveBeenCalled();
+    });
+  });
+
+  describe('Unit Number Validation Scenarios', () => {
+    it('should handle empty unit number in confirmForm', fakeAsync(() => {
+      fixture.detectChanges();
+
+      spyOn(component as any, 'validateForm').and.returnValue(true);
+      spyOn(component as any, 'processFormSubmission');
+
+      // Set unit number to empty
+      component.unitNumberInput.nativeElement.value = '';
+
+      component.confirmForm();
+      tick();
+
+      // Should skip unit number validation and proceed to submission
+      expect(dataService.isUniqueUnitNumber).not.toHaveBeenCalled();
+      expect((component as any).processFormSubmission).toHaveBeenCalled();
+    }));
+  });
+
+  describe('Form Data Collection Edge Cases', () => {
+    it('should handle empty values when collecting form data', () => {
+      fixture.detectChanges();
+
+      // Clear all form values
+      component.firmNameInput.nativeElement.value = '';
+      component.accountUserPrefixInput.nativeElement.value = '';
+      component.unitNumberInput.nativeElement.value = '';
+      component.platformAccountNumberInput.nativeElement.value = '';
+      component.accountTypeSelect.nativeElement.value = '';
+      component.firmIndicatorSelect.nativeElement.value = '';
+      component.notesInput.nativeElement.value = '';
+
+      const formData = (component as any).collectFormData();
+
+      expect(formData).toEqual({
+        firmName: '',
+        name: '',
+        riaCustomerNumber: '',
+        sapCustomerNumber: '',
+        sourceInfos: [{ id: NaN }],
+        accountExt: { accountType: '' },
+        notes: '',
+      });
+    });
+
+    it('should handle non-numeric account type when collecting form data', () => {
+      fixture.detectChanges();
+
+      // Set invalid account type
+      component.accountTypeSelect.nativeElement.value = 'invalid';
+
+      const formData = (component as any).collectFormData();
+
+      // Should handle parsing error and set NaN
+      expect(formData.sourceInfos[0].id).toBeNaN();
+    });
+  });
+
+  describe('Form Reset Behavior', () => {
+    it('should handle preloadForm when accountId is not available', fakeAsync(() => {
+      component.isUpdate = true;
+      (component as any).accountId = null;
+      fixture.detectChanges();
+
+      spyOn(component as any, 'clearFormFields');
+
+      (component as any).resetForm();
+      tick();
+
+      // Should not call preloadForm or clearFormFields when accountId is null
+      expect(dataService.getAccount).not.toHaveBeenCalled();
+    }));
+  });
+
+  describe('Form Submission with Empty Fields', () => {
+    it('should handle form submission with empty optional fields', fakeAsync(() => {
+      fixture.detectChanges();
+
+      // Set required fields but leave optional fields empty
+      component.firmNameInput.nativeElement.value = 'Test Firm';
+      component.accountUserPrefixInput.nativeElement.value = 'TEST';
+      component.unitNumberInput.nativeElement.value = '12345';
+      component.platformAccountNumberInput.nativeElement.value = '67890';
+      component.accountTypeSelect.nativeElement.value = '1';
+      component.firmIndicatorSelect.nativeElement.value = ''; // Optional
+      component.notesInput.nativeElement.value = ''; // Optional
+
+      spyOn(component as any, 'validateForm').and.returnValue(true);
+      spyOn(component as any, 'processFormSubmission').and.callThrough();
+
+      dataService.isUniqueUnitNumber.and.returnValue(of(true));
+
+      component.confirmForm();
+      tick();
+
+      expect((component as any).processFormSubmission).toHaveBeenCalled();
+      expect(dataService.createAccount).toHaveBeenCalled();
+
+      // Verify empty optional fields are handled correctly
+      const submittedData =
+        dataService.createAccount.calls.mostRecent().args[0];
+      expect(submittedData.accountExt?.accountType).toBe('');
+      expect(submittedData.notes).toBe('');
+    }));
+  });
+
+  describe('Error Handling', () => {
+    it('should handle errors when clearing field errors', () => {
+      fixture.detectChanges();
+
+      // Set up an error object with non-standard properties
+      component.formErrors = {
+        FirmName: 'Error 1',
+        NonExistentField: 'Error 2',
+      };
+
+      // This should not throw an error
+      (component as any).clearFieldError('NonExistentField');
+
+      expect(component.formErrors).toEqual({ FirmName: 'Error 1' });
+    });
+  });
+
+  describe('Component Lifecycle', () => {
+    it('should properly initialize in create mode', () => {
+      component.isUpdate = false;
+
+      spyOn(component as any, 'initFormSubscriptions');
+      spyOn(component as any, 'initUpdateMode');
+
+      fixture.detectChanges();
+
+      expect((component as any).initFormSubscriptions).toHaveBeenCalled();
+      expect((component as any).initUpdateMode).not.toHaveBeenCalled();
+    });
+
+    it('should properly initialize in update mode', () => {
+      component.isUpdate = true;
+
+      spyOn(component as any, 'initFormSubscriptions');
+      spyOn(component as any, 'initUpdateMode');
+
+      fixture.detectChanges();
+
+      expect((component as any).initFormSubscriptions).toHaveBeenCalled();
+      expect((component as any).initUpdateMode).toHaveBeenCalled();
     });
   });
 });

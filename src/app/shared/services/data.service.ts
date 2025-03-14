@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
-import { Account } from '../models/account/account.model';
+import { Account, SourceInfo } from '../models/account/account.model';
 
 @Injectable({
   providedIn: 'root',
@@ -33,5 +33,9 @@ export class DataService {
 
   updateAccount(id: string, account: Partial<Account>): Observable<Account> {
     return this.http.put<Account>(`${this.apiUrl}/account/${id}`, account);
+  }
+
+  getSourceInfo(): Observable<SourceInfo[]> {
+    return this.http.get<SourceInfo[]>(`${this.apiUrl}/sourceInfo`);
   }
 }

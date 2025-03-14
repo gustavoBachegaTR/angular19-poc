@@ -22,7 +22,7 @@ export const routes: Routes = [
         component: CreateAccountComponent,
       },
       {
-        path: 'account/update/:id',
+        path: 'account/edit/:id',
         component: UpdateAccountComponent,
       },
       { path: '', redirectTo: 'landing', pathMatch: 'full' },
