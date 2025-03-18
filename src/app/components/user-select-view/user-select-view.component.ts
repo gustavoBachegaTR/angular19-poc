@@ -1,31 +1,30 @@
 import { CommonModule } from '@angular/common';
-import { Component, computed, CUSTOM_ELEMENTS_SCHEMA, effect, signal } from '@angular/core';
+import { Component, computed, CUSTOM_ELEMENTS_SCHEMA, effect, inject, Signal, signal } from '@angular/core';
+import { HttpLoginService } from '@app/serviceshttp/http-login.service';
+import { LoginState } from '@app/state/login.state';
+import { UserSelect } from '@app/shared/models/user-select';
 
 @Component({
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   selector: 'app-user-select-view',
   imports: [CommonModule],
+  providers: [LoginState, HttpLoginService],
   templateUrl: './user-select-view.component.html',
   styleUrl: './user-select-view.component.scss'
 })
 export class UserSelectViewComponent {
+  loginState = inject(LoginState);
   unselectedUser = signal<boolean>(false);
   selectedValue?: string = '';
   validationMessage = signal<string>('');
-  filteredUsers = signal<any[]>([]);
-  users =  signal([
-    { username: 'jacobo', accountName: 'Account name Inc', checked: false },
-    { username: 'Username2', accountName: 'Account name Inc', checked: false },
-    { username: 'Username3', accountName: 'Account name Inc', checked: false },
-    { username: 'clarita', accountName: 'Account name Inc', checked: false },
-    { username: 'Username5', accountName: 'Account name Inc', checked: false },
-    { username: 'Username6', accountName: 'Account name Inc', checked: false },
-    { username: 'Username7', accountName: 'Account name Inc', checked: false },
-    { username: 'Username8', accountName: 'Account name Inc', checked: false },
-    { username: 'Username9', accountName: 'Account name Inc', checked: false },
-  ]);
+  filteredUsers = signal<UserSelect[]>([]);
+  users : Signal<UserSelect[]> = computed(() => {
+    return this.loginState.loginUsersResource.value();
+  }
+  );
 
   constructor(){
+    this.loginState.loginUsersResource.reload();
     effect(() => {
      if(this.users()){
         this.filteredUsers.set([...this.users()]);
