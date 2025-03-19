@@ -1,0 +1,30 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: var(--saf-spacing-7);
+
+  .account-heading {
+    padding: var(--saf-spacing-6) var(--saf-spacing-0);
+  }
+
+  saf-toolbar {
+    padding: var(--saf-spacing-4) var(--saf-spacing-0);
+    margin-bottom: var(--saf-spacing-4);
+
+    span {
+      font: var(--saf-type-body-default-md-strong-standard);
+    }
+  }
+
+  .empty-state {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 326px;
+
+    &#nodata {
+      height: 472px;
+    }
+  }
+}

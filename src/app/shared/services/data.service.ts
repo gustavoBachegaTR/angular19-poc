@@ -38,4 +38,8 @@ export class DataService {
   getSourceInfo(): Observable<SourceInfo[]> {
     return this.http.get<SourceInfo[]>(`${this.apiUrl}/sourceInfo`);
   }
+
+  getAccountFeature(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/accountFeature`);
+  }
 }

@@ -1,0 +1,80 @@
+<div class="container">
+  <saf-text class="account-heading" appearance="heading-3xl" density="standard"
+    >Account features</saf-text
+  >
+
+  <div class="empty-state" id="nodata" *ngIf="!data">
+    <saf-empty-state
+      is-center="true"
+      empty-state-title="There are no account features yet"
+    >
+      <p>You can add an account feature by clicking the button below.</p>
+      <div slot="actions">
+        <saf-button appearance="primary" density="inherit">
+          <saf-icon slot="start" icon-name="plus" appearance="solid"></saf-icon>
+          Create account feature
+        </saf-button>
+      </div>
+    </saf-empty-state>
+  </div>
+
+  <div *ngIf="data">
+    <saf-toolbar class="saf-toolbar">
+      <div slot="top-row-start">
+        <saf-button appearance="primary" density="inherit">
+          <saf-icon slot="start" icon-name="plus" appearance="solid">
+          </saf-icon>
+          Create account feature
+        </saf-button>
+        <saf-button
+          appearance="secondary"
+          density="inherit"
+          (click)="exportToExcel()"
+        >
+          <saf-icon slot="start" icon-name="file-export" appearance="light">
+          </saf-icon>
+          Export
+        </saf-button>
+      </div>
+      <div slot="top-row-end">
+        <span>Search</span>
+        <saf-search-field
+          id="search-field"
+          a11y-aria-description="search by keyword"
+          (input)="searchFilter($event)"
+          (clear)="searchFilter($event)"
+        >
+        </saf-search-field>
+      </div>
+
+      <div slot="bottom-row-end">
+        <saf-button appearance="secondary" density="inherit">
+          <saf-icon slot="start" icon-name="filter"> </saf-icon>
+          Filters
+        </saf-button>
+        <saf-divider
+          orientation="vertical"
+          role="separator"
+          mode="onLight"
+        ></saf-divider>
+        <div *ngIf="data">(Showing {{ data.itemCount }} rows)</div>
+      </div>
+    </saf-toolbar>
+
+    <app-account-features-grid
+      *ngIf="data && data.itemCount > 0"
+      #accountFeaturesGrid
+      [data]="data"
+    ></app-account-features-grid>
+
+    <div class="empty-state" *ngIf="data && data.itemCount === 0">
+      <saf-empty-state
+        is-center="true"
+        empty-state-title="No results in accounts features"
+      >
+        <saf-icon slot="icon" size="45" icon-name="search"></saf-icon>
+        <p>Try searching again or change your search filters.</p>
+      </saf-empty-state>
+    </div>
+  </div>
+</div>
