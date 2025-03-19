@@ -1,0 +1,173 @@
+<wj-flex-grid
+  #flex
+  [itemsSource]="data"
+  [headersVisibility]="'Column'"
+  [headersFocusability]="'All'"
+  ariaLabel="Account Features"
+>
+  <wj-flex-grid-filter
+    [grid]="flex"
+    [filterColumns]="['id', 'displayName', 'ofs.name', 'status', 'isVisible']"
+  ></wj-flex-grid-filter>
+
+  <wj-flex-grid-column
+    [format]="'d0'"
+    [header]="'Account ID'"
+    [binding]="'id'"
+    [isReadOnly]="true"
+  >
+    <ng-template wjFlexGridCellTemplate cellType="ColumnHeader" let-col="col">
+      <div class="column-header">
+        <span>{{ col.header }}</span>
+        <span class="icon-container" *ngIf="col.allowSorting">
+          <saf-icon
+            [iconName]="
+              col.currentSort === '+'
+                ? 'arrow-up'
+                : col.currentSort === '-'
+                  ? 'arrow-down'
+                  : 'arrow-up-arrow-down'
+            "
+            appearance="light"
+          ></saf-icon>
+        </span>
+      </div>
+    </ng-template>
+    <ng-template wjFlexGridCellTemplate cellType="Cell" let-cell="cell">
+      <span [attr.aria-label]="'Account ID ' + cell.item.id">
+        {{ cell.item.id }}
+      </span>
+    </ng-template>
+  </wj-flex-grid-column>
+
+  <wj-flex-grid-column
+    [header]="'Account Name'"
+    [binding]="'displayName'"
+    [isReadOnly]="true"
+  >
+    <ng-template wjFlexGridCellTemplate cellType="ColumnHeader" let-col="col">
+      <div class="column-header">
+        <span>{{ col.header }}</span>
+        <span class="icon-container" *ngIf="col.allowSorting">
+          <saf-icon
+            [iconName]="
+              col.currentSort === '+'
+                ? 'arrow-up'
+                : col.currentSort === '-'
+                  ? 'arrow-down'
+                  : 'arrow-up-arrow-down'
+            "
+            appearance="light"
+          ></saf-icon>
+        </span>
+      </div>
+    </ng-template>
+    <ng-template wjFlexGridCellTemplate [cellType]="'Cell'" let-cell="cell">
+      <a
+        href="#"
+        [attr.aria-label]="'Account name ' + cell.item.displayName"
+        [title]="cell.item.displayName"
+        >{{ cell.item.displayName }}</a
+      >
+    </ng-template>
+  </wj-flex-grid-column>
+
+  <wj-flex-grid-column
+    [header]="'OFS Name'"
+    [binding]="'ofs.name'"
+    [isReadOnly]="true"
+  >
+    <ng-template wjFlexGridCellTemplate cellType="ColumnHeader" let-col="col">
+      <div class="column-header">
+        <span>{{ col.header }}</span>
+        <span class="icon-container" *ngIf="col.allowSorting">
+          <saf-icon
+            [iconName]="
+              col.currentSort === '+'
+                ? 'arrow-up'
+                : col.currentSort === '-'
+                  ? 'arrow-down'
+                  : 'arrow-up-arrow-down'
+            "
+            appearance="light"
+          ></saf-icon>
+        </span>
+      </div>
+    </ng-template>
+    <ng-template wjFlexGridCellTemplate [cellType]="'Cell'" let-cell="cell">
+      <span [attr.aria-label]="'OFS Name ' + cell.item.ofs?.name">
+        {{ cell.item.ofs?.name }}</span
+      >
+    </ng-template>
+  </wj-flex-grid-column>
+
+  <wj-flex-grid-column
+    [header]="'Status'"
+    [binding]="'status'"
+    [isReadOnly]="true"
+  >
+    <ng-template wjFlexGridCellTemplate cellType="ColumnHeader" let-col="col">
+      <div class="column-header">
+        <span>{{ col.header }}</span>
+        <span class="icon-container" *ngIf="col.allowSorting">
+          <saf-icon
+            [iconName]="
+              col.currentSort === '+'
+                ? 'arrow-up'
+                : col.currentSort === '-'
+                  ? 'arrow-down'
+                  : 'arrow-up-arrow-down'
+            "
+            appearance="light"
+          ></saf-icon>
+        </span>
+      </div>
+    </ng-template>
+    <ng-template wjFlexGridCellTemplate [cellType]="'Cell'" let-cell="cell">
+      <span
+        [attr.aria-label]="'Status'"
+        [ngClass]="getStatusClass(cell.item.status)"
+      ></span>
+      {{ cell.item.status }}
+    </ng-template>
+  </wj-flex-grid-column>
+
+  <wj-flex-grid-column
+    [header]="'Display to Site Admins'"
+    [binding]="'isVisible'"
+    [isReadOnly]="true"
+  >
+    <ng-template wjFlexGridCellTemplate cellType="ColumnHeader" let-col="col">
+      <div class="column-header">
+        <span>{{ col.header }}</span>
+        <span class="icon-container" *ngIf="col.allowSorting">
+          <saf-icon
+            [iconName]="
+              col.currentSort === '+'
+                ? 'arrow-up'
+                : col.currentSort === '-'
+                  ? 'arrow-down'
+                  : 'arrow-up-arrow-down'
+            "
+            appearance="light"
+          ></saf-icon>
+        </span>
+      </div>
+    </ng-template>
+    <ng-template wjFlexGridCellTemplate [cellType]="'Cell'" let-cell="cell">
+      <div class="checkbox-container">
+        <input
+          type="checkbox"
+          [id]="'checkbox-' + cell.item.id"
+          [checked]="cell.item.isVisible"
+          disabled
+          aria-disabled="true"
+          [attr.aria-label]="'Display to Site Admins'"
+          (change)="toggleAdminDisplay(cell.item)"
+        />
+
+        {{ cell.item.isVisible ? 'Yes' : 'No' }}
+      </div>
+    </ng-template>
+  </wj-flex-grid-column>
+</wj-flex-grid>
