@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
 import { Account, SourceInfo } from '../models/account/account.model';
+import { AccountFeature } from '../models/account/account-features.model';
 
 @Injectable({
   providedIn: 'root',
@@ -39,7 +40,9 @@ export class DataService {
     return this.http.get<SourceInfo[]>(`${this.apiUrl}/sourceInfo`);
   }
 
-  getAccountFeature(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/accountFeature`);
+  getAccountFeature(): Observable<{ row: AccountFeature[] }[]> {
+    return this.http.get<{ row: AccountFeature[] }[]>(
+      `${this.apiUrl}/accountFeature`,
+    );
   }
 }

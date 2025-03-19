@@ -1,9 +1,13 @@
 <div class="container">
-  <saf-text class="account-heading" appearance="heading-3xl" density="standard"
-    >Account features</saf-text
-  >
+  <saf-text class="account-heading" appearance="heading-3xl" density="standard">
+    Account features
+  </saf-text>
 
-  <div class="empty-state" id="nodata" *ngIf="!data">
+  <div
+    class="empty-state"
+    id="nodata"
+    *ngIf="!data()?.sourceCollection?.length"
+  >
     <saf-empty-state
       is-center="true"
       empty-state-title="There are no account features yet"
@@ -18,12 +22,11 @@
     </saf-empty-state>
   </div>
 
-  <div *ngIf="data">
+  <div *ngIf="data() as collection">
     <saf-toolbar class="saf-toolbar">
       <div slot="top-row-start">
         <saf-button appearance="primary" density="inherit">
-          <saf-icon slot="start" icon-name="plus" appearance="solid">
-          </saf-icon>
+          <saf-icon slot="start" icon-name="plus" appearance="solid"></saf-icon>
           Create account feature
         </saf-button>
         <saf-button
@@ -31,8 +34,11 @@
           density="inherit"
           (click)="exportToExcel()"
         >
-          <saf-icon slot="start" icon-name="file-export" appearance="light">
-          </saf-icon>
+          <saf-icon
+            slot="start"
+            icon-name="file-export"
+            appearance="light"
+          ></saf-icon>
           Export
         </saf-button>
       </div>
@@ -49,7 +55,7 @@
 
       <div slot="bottom-row-end">
         <saf-button appearance="secondary" density="inherit">
-          <saf-icon slot="start" icon-name="filter"> </saf-icon>
+          <saf-icon slot="start" icon-name="filter"></saf-icon>
           Filters
         </saf-button>
         <saf-divider
@@ -57,17 +63,19 @@
           role="separator"
           mode="onLight"
         ></saf-divider>
-        <div *ngIf="data">(Showing {{ data.itemCount }} rows)</div>
+        <div *ngIf="collection.itemCount !== undefined">
+          (Showing {{ collection.itemCount }} rows)
+        </div>
       </div>
     </saf-toolbar>
 
     <app-account-features-grid
-      *ngIf="data && data.itemCount > 0"
+      *ngIf="collection.itemCount > 0"
       #accountFeaturesGrid
-      [data]="data"
+      [data]="collection"
     ></app-account-features-grid>
 
-    <div class="empty-state" *ngIf="data && data.itemCount === 0">
+    <div class="empty-state" *ngIf="collection.itemCount === 0">
       <saf-empty-state
         is-center="true"
         empty-state-title="No results in accounts features"

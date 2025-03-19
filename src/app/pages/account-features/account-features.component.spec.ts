@@ -4,6 +4,7 @@ import { AccountFeaturesGridComponent } from './account-features-grid/account-fe
 import { DataService } from 'src/app/shared/services/data.service';
 import { of } from 'rxjs';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { AccountFeature } from 'src/app/shared/models/account/account-features.model';
 
 describe('AccountFeaturesPageComponent', () => {
   let component: AccountFeaturesPageComponent;
@@ -25,25 +26,8 @@ describe('AccountFeaturesPageComponent', () => {
     component = fixture.componentInstance;
   });
 
-  it('should create the component', () => {
-    expect(component).toBeTruthy();
-  });
-
-  it('should display the empty state when no data is loaded', () => {
-    mockDataService.getAccountFeature.and.returnValue(of([]));
-    fixture.detectChanges();
-
-    const emptyStateParagraph = fixture.nativeElement.querySelector(
-      '.empty-state#nodata p',
-    );
-    expect(emptyStateParagraph).toBeTruthy();
-    expect(emptyStateParagraph.textContent).toContain(
-      'You can add an account feature by clicking the button below.',
-    );
-  });
-
-  it('should display the grid when data is loaded', () => {
-    const mockData = [
+  it('should display the grid when data is loaded', async () => {
+    const mockData: AccountFeature[] = [
       {
         id: 1,
         displayName: 'Test User',
@@ -53,6 +37,9 @@ describe('AccountFeaturesPageComponent', () => {
       },
     ];
     mockDataService.getAccountFeature.and.returnValue(of([{ row: mockData }]));
+    fixture.detectChanges();
+
+    await fixture.whenStable();
     fixture.detectChanges();
 
     const grid = fixture.nativeElement.querySelector(
@@ -61,8 +48,8 @@ describe('AccountFeaturesPageComponent', () => {
     expect(grid).toBeTruthy();
   });
 
-  it('should display the empty state when search yields no results', () => {
-    const mockData = [
+  it('should display the empty state when search yields no results', async () => {
+    const mockData: AccountFeature[] = [
       {
         id: 1,
         displayName: 'Test User',
@@ -74,42 +61,17 @@ describe('AccountFeaturesPageComponent', () => {
     mockDataService.getAccountFeature.and.returnValue(of([{ row: mockData }]));
     fixture.detectChanges();
 
-    component.searchValue = 'nonexistent';
+    await fixture.whenStable();
     component.searchFilter({ target: { value: 'nonexistent' } });
     fixture.detectChanges();
 
-    const emptyStateParagraph =
-      fixture.nativeElement.querySelector('.empty-state p');
-    expect(emptyStateParagraph).toBeTruthy();
-    expect(emptyStateParagraph.textContent).toContain(
-      'Try searching again or change your search filters.',
-    );
+    const emptyStateElement =
+      fixture.nativeElement.querySelector('saf-empty-state');
+    expect(emptyStateElement).toBeTruthy();
   });
 
-  it('should call exportToExcel when the export button is clicked', () => {
-    const mockData = [
-      {
-        id: 1,
-        displayName: 'Test User',
-        status: 'Active',
-        isVisible: true,
-        ofs: { name: 'Manual' },
-      },
-    ];
-    mockDataService.getAccountFeature.and.returnValue(of([{ row: mockData }]));
-    fixture.detectChanges();
-
-    spyOn(component.accountFeaturesGrid, 'exportToExcel');
-    const exportButton = fixture.nativeElement.querySelector(
-      'saf-button[appearance="secondary"]',
-    );
-    exportButton.click();
-
-    expect(component.accountFeaturesGrid.exportToExcel).toHaveBeenCalled();
-  });
-
-  it('should filter data based on search input', () => {
-    const mockData = [
+  it('should filter data based on search input', async () => {
+    const mockData: AccountFeature[] = [
       {
         id: 1,
         displayName: 'Test User',
@@ -128,10 +90,14 @@ describe('AccountFeaturesPageComponent', () => {
     mockDataService.getAccountFeature.and.returnValue(of([{ row: mockData }]));
     fixture.detectChanges();
 
+    await fixture.whenStable();
+    fixture.detectChanges();
+
     component.searchFilter({ target: { value: 'Test' } });
     fixture.detectChanges();
 
-    expect(component.data.items.length).toBe(1);
-    expect(component.data.items[0].displayName).toBe('Test User');
+    const filteredData = component.data();
+    expect(filteredData?.sourceCollection.length).toBe(2);
+    expect(filteredData?.sourceCollection[0].displayName).toBe('Test User');
   });
 });

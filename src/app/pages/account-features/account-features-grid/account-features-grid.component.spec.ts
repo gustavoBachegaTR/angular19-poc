@@ -6,6 +6,7 @@ import { WjFlexGridFilter } from '@grapecity/wijmo.angular2.grid.filter';
 import { WjFlexGridColumn } from '@grapecity/wijmo.angular2.grid';
 import { WjFlexGridCellTemplate } from '@grapecity/wijmo.angular2.grid';
 import { FlexGridXlsxConverter } from '@grapecity/wijmo.grid.xlsx';
+import { AccountFeature } from 'src/app/shared/models/account/account-features.model';
 
 describe('AccountFeaturesGridComponent', () => {
   let component: AccountFeaturesGridComponent;
@@ -14,8 +15,8 @@ describe('AccountFeaturesGridComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
-        AccountFeaturesGridComponent, // Importamos el componente standalone
-        WjFlexGrid, // Importamos los componentes standalone necesarios
+        AccountFeaturesGridComponent,
+        WjFlexGrid,
         WjFlexGridFilter,
         WjFlexGridColumn,
         WjFlexGridCellTemplate,
@@ -25,7 +26,7 @@ describe('AccountFeaturesGridComponent', () => {
     fixture = TestBed.createComponent(AccountFeaturesGridComponent);
     component = fixture.componentInstance;
 
-    const mockData = new CollectionView([
+    const mockData: AccountFeature[] = [
       {
         id: 1,
         displayName: 'Test User',
@@ -33,13 +34,13 @@ describe('AccountFeaturesGridComponent', () => {
         status: 'Active',
         isVisible: true,
       },
-    ]);
-    component.data = mockData;
+    ];
+    component.data = new CollectionView<AccountFeature>(mockData);
     fixture.detectChanges();
   });
 
   afterEach(() => {
-    TestBed.resetTestingModule(); // Limpia manualmente el módulo de pruebas
+    TestBed.resetTestingModule();
   });
 
   it('should create the component', () => {
@@ -91,7 +92,7 @@ describe('AccountFeaturesGridComponent', () => {
   });
 
   it('should bind data to the grid', () => {
-    const mockData = new CollectionView([
+    const mockData: AccountFeature[] = [
       {
         id: 1,
         displayName: 'Test User',
@@ -106,11 +107,43 @@ describe('AccountFeaturesGridComponent', () => {
         status: 'Canceled',
         isVisible: false,
       },
-    ]);
-    component.data = mockData;
+    ];
+    component.data = new CollectionView<AccountFeature>(mockData);
     fixture.detectChanges();
 
-    expect(component.flexGrid.itemsSource).toBe(mockData);
+    expect(component.flexGrid.itemsSource).toBe(component.data);
     expect(component.flexGrid.itemsSource.items.length).toBe(2);
+  });
+
+  it('should render grid rows correctly', () => {
+    const rows = component.flexGrid.rows;
+    expect(rows.length).toBe(1);
+    expect(rows[0].dataItem.displayName).toBe('Test User');
+  });
+
+  it('should apply filters correctly', () => {
+    const mockData: AccountFeature[] = [
+      {
+        id: 1,
+        displayName: 'Test User',
+        ofs: { name: 'Manual' },
+        status: 'Active',
+        isVisible: true,
+      },
+      {
+        id: 2,
+        displayName: 'Another User',
+        ofs: { name: 'Auto' },
+        status: 'Canceled',
+        isVisible: false,
+      },
+    ];
+    component.data = new CollectionView<AccountFeature>(mockData);
+    component.data.filter = (item: AccountFeature) => item.status === 'Active';
+    component.data.refresh();
+    fixture.detectChanges();
+
+    expect(component.flexGrid.itemsSource.items.length).toBe(1);
+    expect(component.flexGrid.itemsSource.items[0].status).toBe('Active');
   });
 });

@@ -11,6 +11,7 @@ import { WjGridModule, WjFlexGrid } from '@grapecity/wijmo.angular2.grid';
 import { WjGridFilterModule } from '@grapecity/wijmo.angular2.grid.filter';
 import { CollectionView } from '@grapecity/wijmo';
 import { FlexGridXlsxConverter } from '@grapecity/wijmo.grid.xlsx';
+import { AccountFeature } from 'src/app/shared/models/account/account-features.model';
 
 @Component({
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -21,7 +22,7 @@ import { FlexGridXlsxConverter } from '@grapecity/wijmo.grid.xlsx';
   imports: [CommonModule, WjGridModule, WjGridFilterModule],
 })
 export class AccountFeaturesGridComponent implements OnInit, AfterViewInit {
-  @Input() data!: CollectionView;
+  @Input() data!: CollectionView<AccountFeature>;
   @ViewChild('flex', { static: false }) flexGrid!: WjFlexGrid;
 
   ngOnInit(): void {}

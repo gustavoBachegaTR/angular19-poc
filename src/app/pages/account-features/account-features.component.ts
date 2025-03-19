@@ -3,12 +3,17 @@ import {
   CUSTOM_ELEMENTS_SCHEMA,
   OnInit,
   ViewChild,
+  resource,
+  computed,
+  Signal,
 } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { DataService } from 'src/app/shared/services/data.service';
 import { CollectionView } from '@grapecity/wijmo';
 import { CommonModule } from '@angular/common';
 import { AccountFeaturesGridComponent } from './account-features-grid/account-features-grid.component';
+import { firstValueFrom } from 'rxjs';
+import { AccountFeature } from 'src/app/shared/models/account/account-features.model';
 
 @Component({
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -20,17 +25,28 @@ import { AccountFeaturesGridComponent } from './account-features-grid/account-fe
 export class AccountFeaturesPageComponent implements OnInit {
   @ViewChild('accountFeaturesGrid', { static: false })
   accountFeaturesGrid!: AccountFeaturesGridComponent;
-  data!: CollectionView;
-  searchValue = '';
+
+  accountFeaturesResource = resource({
+    request: () => ({}),
+    loader: async () => {
+      const response = await firstValueFrom(
+        this.dataService.getAccountFeature(),
+      );
+      if (!response || !response[0]?.row) {
+        return new CollectionView<AccountFeature>([]);
+      }
+      return new CollectionView<AccountFeature>(response[0].row);
+    },
+  });
+
+  data: Signal<CollectionView<AccountFeature> | null> = computed(() => {
+    const value = this.accountFeaturesResource.value();
+    return value && value.sourceCollection?.length > 0 ? value : null;
+  });
 
   constructor(private dataService: DataService) {}
 
-  ngOnInit(): void {
-    this.dataService.getAccountFeature().subscribe((response) => {
-      console.log('Data received:', response);
-      this.data = new CollectionView(response[0].row);
-    });
-  }
+  ngOnInit(): void {}
 
   exportToExcel(): void {
     if (this.accountFeaturesGrid) {
@@ -40,7 +56,11 @@ export class AccountFeaturesPageComponent implements OnInit {
 
   searchFilter(event: any): void {
     const value = (event.target?.value || '').toLowerCase().trim();
-    this.data.filter = (item: any) => {
+    const currentData = this.data();
+    if (!currentData) {
+      return;
+    }
+    currentData.filter = (item: AccountFeature) => {
       return (
         item.id.toString().includes(value) ||
         (item.displayName || '').toLowerCase().includes(value) ||
@@ -49,6 +69,6 @@ export class AccountFeaturesPageComponent implements OnInit {
         (item.isVisible ? 'yes' : 'no').includes(value)
       );
     };
-    this.data.refresh();
+    currentData.refresh();
   }
 }
