@@ -411,5 +411,16 @@
         }
       ]
     }
+  "login-users": [
+        { "username": "jacobo", "accountName": "Account name Inc", "checked": false },
+        { "username": "Username2", "accountName": "Account name Inc", "checked": false },
+        { "username": "Username3", "accountName": "Account name Inc", "checked": false },
+        { "username": "clarita", "accountName": "Account name Inc", "checked": false },
+        { "username": "testusername", "accountName": "Account name Inc", "checked": false },
+        { "username": "Username6", "accountName": "Account name Inc", "checked": false },
+        { "username": "Username7", "accountName": "Account name Inc", "checked": false },
+        { "username": "Username8", "accountName": "Account name Inc", "checked": false },
+        { "username": "Username9", "accountName": "Account name Inc", "checked": false }
   ]
 }
+

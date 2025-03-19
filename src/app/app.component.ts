@@ -19,6 +19,7 @@ import {
   SafDivider,
   SafEmptyState,
 } from '@saffron/core-components';
+import { SafAlert, SafButton, SafFooter, SafListboxOption, SafMenuItem, SafProductHeader, SafSearchField, SafSelect, SafSideNav, SafSrOnly, SafText, SafTextarea, SafTextfield, SafToolbar, SafTooltip, SafCard, SafBadge, SafRadio, SafRadioGroup, SafIcon, SafStatus } from '@saffron/core-components';
 
 SafSideNav();
 SafMenuItem();
@@ -37,6 +38,12 @@ SafListboxOption();
 SafTextarea();
 SafDivider();
 SafEmptyState();
+SafCard();
+SafBadge();
+SafRadio();
+SafRadioGroup();
+SafIcon();
+SafStatus();
 
 @Component({
   selector: 'app-root',
