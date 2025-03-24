@@ -411,6 +411,7 @@
         }
       ]
     }
+  ],
   "login-users": [
         { "username": "jacobo", "accountName": "Account name Inc", "checked": false },
         { "username": "Username2", "accountName": "Account name Inc", "checked": false },
