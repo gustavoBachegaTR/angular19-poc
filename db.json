@@ -412,49 +412,6 @@
       ]
     }
   ],
-  "accountFeatureStatuses": [
-    {
-      "id": 1,
-      "code": 1,
-      "description": "Active"
-    },
-    {
-      "id": 2,
-      "code": 2,
-      "description": "Cancelled"
-    },
-    {
-      "id": 4,
-      "code": 4,
-      "description": "Trial"
-    }
-  ],
-   "ofs": [
-    {
-      "id": 100,
-      "name": "ALL",
-      "description": "All OFS's",
-      "availability": "PROD"
-    },
-    {
-      "id": 1001,
-      "name": "AUTO",
-      "description": "Auto Calculators",
-      "availability": "PROD"
-    },
-    {
-      "id": 101,
-      "name": "MANUAL",
-      "description": "Manual Calculators",
-      "availability": "PROD"
-    },
-    {
-      "id": 102,
-      "name": "ALL",
-      "description": "All OFS's",
-      "availability": "PROD"
-    }
-  ],
   "login-users": [
         { "username": "jacobo", "accountName": "Account name Inc", "checked": false },
         { "username": "Username2", "accountName": "Account name Inc", "checked": false },
