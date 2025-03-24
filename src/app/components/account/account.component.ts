@@ -1,14 +1,21 @@
-import { Component, OnInit } from '@angular/core';
-import { DataService } from '../../shared/services/data.service';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { DataService } from '@shared/services/data.service';
 import { RouterModule } from '@angular/router';
+import { WjGridModule } from '@grapecity/wijmo.angular2.grid';
+import { CommonGridComponent } from '@shared/components/common-grid/common-grid.component';
 
 @Component({
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   selector: 'app-account',
-  template: `<!-- <app-common-grid [data]="data" [columns]="columns"></app-common-grid> -->
-              <h1>Hello assdsa</h1>`,
-  imports: [RouterModule]
+  template: `
+  <app-common-grid [data]="data" [columns]="columns">
+  </app-common-grid>
+
+  `,
+  imports: [RouterModule, CommonGridComponent, WjGridModule]
 })
 export class AccountComponent implements OnInit {
+  @ViewChild('columnsTemplate') columnsTemplateRef!: any;
   data!: any[];
   columns: any[] = [
     { header: 'Country', binding: 'country' },
@@ -16,7 +23,7 @@ export class AccountComponent implements OnInit {
     { header: 'Expenses', binding: 'expenses', format: 'n2' }
   ];
 
-  constructor(private dataService: DataService) {}
+  constructor(private dataService: DataService) { }
 
   ngOnInit() {
     console.log('AccountComponent initialized');

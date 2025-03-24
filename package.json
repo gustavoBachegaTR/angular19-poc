@@ -22,6 +22,7 @@
     "@grapecity/wijmo.angular2.all": "^5.20242.30",
     "@saffron/core-components": "^2.28.0",
     "@saffron/core-styles": "^2.11.0",
+    "jszip": "^2.7.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"

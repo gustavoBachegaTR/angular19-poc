@@ -1,10 +1,427 @@
 {
   "data": [
-    { "id": 0, "country": "US", "sales": 1318.37, "expenses": 4212.41 },
-    { "id": 1, "country": "Germany", "sales": 5847.95, "expenses": 89.79 },
-    { "id": 2, "country": "UK", "sales": 502.55, "expenses": 2878.50 },
-    { "id": 3, "country": "Japan", "sales": 4675.40, "expenses": 488.65 },
-    { "id": 4, "country": "Italy", "sales": 2117.57, "expenses": 925.60 },
-    { "id": 5, "country": "Greece", "sales": 322.10, "expenses": 4163.96 }
+    {
+      "id": "0",
+      "country": "US",
+      "sales": 1318.37,
+      "expenses": 4212.41
+    },
+    {
+      "id": "1",
+      "country": "Germany",
+      "sales": 5847.95,
+      "expenses": 89.79
+    },
+    {
+      "id": "2",
+      "country": "UK",
+      "sales": 502.55,
+      "expenses": 2878.5
+    },
+    {
+      "id": "3",
+      "country": "Japan",
+      "sales": 4675.4,
+      "expenses": 488.65
+    },
+    {
+      "id": "4",
+      "country": "Italy",
+      "sales": 2117.57,
+      "expenses": 925.6
+    },
+    {
+      "id": "5",
+      "country": "Greece",
+      "sales": 322.1,
+      "expenses": 4163.96
+    }
+  ],
+  "account": [
+    {
+      "id": "38982",
+      "accountCrossReference": null,
+      "accountDomains": [],
+      "accountExt": null,
+      "accountExtInfo": null,
+      "authorizationCode": null,
+      "firmName": "@abcdefg",
+      "groups": [
+        {
+          "id": 52154
+        }
+      ],
+      "name": "1",
+      "notes": null,
+      "riaCustomerNumber": "123asdf",
+      "sapCustomerNumber": null,
+      "sourceInfos": [
+        {
+          "id": 0,
+          "description": "unassigned",
+          "notes": null
+        }
+      ],
+      "startDate": "2016-05-09T13:54:49-05:00",
+      "status": {
+        "id": 1,
+        "code": 1,
+        "description": "Active"
+      },
+      "siteAdmin": " ",
+      "sourceInfo": " ",
+      "totalOrders": 0,
+      "totalUsers": 0,
+      "supportsIpOverrideToken": null
+    },
+    {
+      "firmName": "asfsfdg",
+      "name": "Daniel",
+      "riaCustomerNumber": "123456789",
+      "sapCustomerNumber": "",
+      "sourceInfos": [
+        {
+          "id": 10
+        }
+      ],
+      "accountExt": {
+        "accountType": "T"
+      },
+      "notes": "",
+      "id": "5774363"
+    },
+    {
+      "firmName": "DanielTest22",
+      "name": "DanPrfx",
+      "riaCustomerNumber": "12345678",
+      "sapCustomerNumber": "",
+      "sourceInfos": [
+        {
+          "id": 0
+        }
+      ],
+      "accountExt": {
+        "accountType": ""
+      },
+      "notes": "",
+      "id": "258"
+    },
+    {
+      "id": "116",
+      "firmName": "Daniel Test 3",
+      "name": "DanTest3",
+      "riaCustomerNumber": "76543210",
+      "sapCustomerNumber": "wsdfdsfgfd",
+      "sourceInfos": [
+        {
+          "id": 13
+        }
+      ],
+      "accountExt": {
+        "accountType": "E"
+      },
+      "notes": "Testing notes"
+    }
+  ],
+  "sourceInfo": [
+    {
+      "id": 0,
+      "description": "unassigned",
+      "notes": null
+    },
+    {
+      "id": 1,
+      "description": "internal",
+      "notes": null
+    },
+    {
+      "id": 2,
+      "description": "ria customer",
+      "notes": null
+    },
+    {
+      "id": 3,
+      "description": "westlaw customer",
+      "notes": null
+    },
+    {
+      "id": 4,
+      "description": "student",
+      "notes": null
+    },
+    {
+      "id": 5,
+      "description": "HR-Divested to West",
+      "notes": null
+    },
+    {
+      "id": 6,
+      "description": "Inactive External",
+      "notes": null
+    },
+    {
+      "id": 7,
+      "description": "RIA & West ",
+      "notes": null
+    },
+    {
+      "id": 8,
+      "description": "IPAccount - Internal",
+      "notes": null
+    },
+    {
+      "id": 9,
+      "description": "IPAccount - RG",
+      "notes": null
+    },
+    {
+      "id": 10,
+      "description": "IPAccount - West",
+      "notes": null
+    },
+    {
+      "id": 11,
+      "description": "IPAccount - RG/West",
+      "notes": null
+    },
+    {
+      "id": 12,
+      "description": "Token - Internal",
+      "notes": null
+    },
+    {
+      "id": 13,
+      "description": "Token - RG",
+      "notes": null
+    },
+    {
+      "id": 14,
+      "description": "Token - West",
+      "notes": null
+    },
+    {
+      "id": 15,
+      "description": "Token - RG/West",
+      "notes": null
+    }
+  ],
+  "accountFeature": [
+    {
+      "total": 20,
+      "row": [
+        {
+          "id": 1302,
+          "displayName": "adasheradsdada",
+          "status": "Active",
+          "isVisible": false,
+          "ofs": {
+            "id": 100,
+            "name": "ALL"
+          }
+        },
+        {
+          "id": 1282,
+          "displayName": "adash",
+          "status": "Trial",
+          "isVisible": true,
+          "ofs": {
+            "id": 1001,
+            "name": "AUTO"
+          }
+        },
+        {
+          "id": 1282,
+          "displayName": "adash",
+          "status": "Trial",
+          "isVisible": true,
+          "ofs": {
+            "id": 1001,
+            "name": "AUTO"
+          }
+        },
+        {
+          "id": 1303,
+          "displayName": "randomuser1",
+          "status": "Canceled",
+          "isVisible": false,
+          "ofs": {
+            "id": 101,
+            "name": "MANUAL"
+          }
+        },
+        {
+          "id": 1304,
+          "displayName": "exampleuser2",
+          "status": "Active",
+          "isVisible": true,
+          "ofs": {
+            "id": 102,
+            "name": "ALL"
+          }
+        },
+        {
+          "id": 1305,
+          "displayName": "testuser3",
+          "status": "Trial",
+          "isVisible": false,
+          "ofs": {
+            "id": 103,
+            "name": "AUTO"
+          }
+        },
+        {
+          "id": 1306,
+          "displayName": "sampleuser4",
+          "status": "Active",
+          "isVisible": true,
+          "ofs": {
+            "id": 104,
+            "name": "MANUAL"
+          }
+        },
+        {
+          "id": 1307,
+          "displayName": "demoaccount5",
+          "status": "Canceled",
+          "isVisible": false,
+          "ofs": {
+            "id": 105,
+            "name": "ALL"
+          }
+        },
+        {
+          "id": 1308,
+          "displayName": "userexample6",
+          "status": "Trial",
+          "isVisible": true,
+          "ofs": {
+            "id": 106,
+            "name": "AUTO"
+          }
+        },
+        {
+          "id": 1309,
+          "displayName": "testaccount7",
+          "status": "Active",
+          "isVisible": false,
+          "ofs": {
+            "id": 107,
+            "name": "MANUAL"
+          }
+        },
+        {
+          "id": 1310,
+          "displayName": "randomuser8",
+          "status": "Canceled",
+          "isVisible": true,
+          "ofs": {
+            "id": 108,
+            "name": "ALL"
+          }
+        },
+        {
+          "id": 1311,
+          "displayName": "exampleuser9",
+          "status": "Trial",
+          "isVisible": false,
+          "ofs": {
+            "id": 109,
+            "name": "AUTO"
+          }
+        },
+        {
+          "id": 1312,
+          "displayName": "testuser10",
+          "status": "Active",
+          "isVisible": true,
+          "ofs": {
+            "id": 110,
+            "name": "MANUAL"
+          }
+        },
+        {
+          "id": 1313,
+          "displayName": "sampleuser11",
+          "status": "Canceled",
+          "isVisible": false,
+          "ofs": {
+            "id": 111,
+            "name": "ALL"
+          }
+        },
+        {
+          "id": 1314,
+          "displayName": "demoaccount12",
+          "status": "Trial",
+          "isVisible": true,
+          "ofs": {
+            "id": 112,
+            "name": "AUTO"
+          }
+        },
+        {
+          "id": 1315,
+          "displayName": "userexample13",
+          "status": "Active",
+          "isVisible": false,
+          "ofs": {
+            "id": 113,
+            "name": "MANUAL"
+          }
+        },
+        {
+          "id": 1316,
+          "displayName": "testaccount14",
+          "status": "Canceled",
+          "isVisible": true,
+          "ofs": {
+            "id": 114,
+            "name": "ALL"
+          }
+        },
+        {
+          "id": 1317,
+          "displayName": "randomuser15",
+          "status": "Trial",
+          "isVisible": false,
+          "ofs": {
+            "id": 115,
+            "name": "AUTO"
+          }
+        },
+        {
+          "id": 1318,
+          "displayName": "exampleuser16",
+          "status": "Active",
+          "isVisible": true,
+          "ofs": {
+            "id": 116,
+            "name": "MANUAL"
+          }
+        },
+        {
+          "id": 1319,
+          "displayName": "testuser17",
+          "status": "Canceled",
+          "isVisible": false,
+          "ofs": {
+            "id": 117,
+            "name": "ALL"
+          }
+        }
+      ]
+    }
+  ],
+  "login-users": [
+        { "username": "jacobo", "accountName": "Account name Inc", "checked": false },
+        { "username": "Username2", "accountName": "Account name Inc", "checked": false },
+        { "username": "Username3", "accountName": "Account name Inc", "checked": false },
+        { "username": "clarita", "accountName": "Account name Inc", "checked": false },
+        { "username": "testusername", "accountName": "Account name Inc", "checked": false },
+        { "username": "Username6", "accountName": "Account name Inc", "checked": false },
+        { "username": "Username7", "accountName": "Account name Inc", "checked": false },
+        { "username": "Username8", "accountName": "Account name Inc", "checked": false },
+        { "username": "Username9", "accountName": "Account name Inc", "checked": false }
   ]
 }
+
