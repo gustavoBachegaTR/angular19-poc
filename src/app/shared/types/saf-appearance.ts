@@ -1,1 +1,0 @@
-export type SafAppearance = 'informational' | 'success' | 'warning' | 'error' | 'neutral';
