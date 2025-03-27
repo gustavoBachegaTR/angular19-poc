@@ -216,7 +216,7 @@
           "isVisible": false,
           "ofs": {
             "id": 100,
-            "name": "ALL"
+            "name": "All"
           }
         },
         {
@@ -226,7 +226,7 @@
           "isVisible": true,
           "ofs": {
             "id": 1001,
-            "name": "AUTO"
+            "name": "Auto"
           }
         },
         {
@@ -236,7 +236,7 @@
           "isVisible": true,
           "ofs": {
             "id": 1001,
-            "name": "AUTO"
+            "name": "Auto"
           }
         },
         {
@@ -246,7 +246,7 @@
           "isVisible": false,
           "ofs": {
             "id": 101,
-            "name": "MANUAL"
+            "name": "Manual"
           }
         },
         {
@@ -256,7 +256,7 @@
           "isVisible": true,
           "ofs": {
             "id": 102,
-            "name": "ALL"
+            "name": "All"
           }
         },
         {
@@ -266,7 +266,7 @@
           "isVisible": false,
           "ofs": {
             "id": 103,
-            "name": "AUTO"
+            "name": "Auto"
           }
         },
         {
@@ -276,7 +276,7 @@
           "isVisible": true,
           "ofs": {
             "id": 104,
-            "name": "MANUAL"
+            "name": "Manual"
           }
         },
         {
@@ -286,7 +286,7 @@
           "isVisible": false,
           "ofs": {
             "id": 105,
-            "name": "ALL"
+            "name": "All"
           }
         },
         {
@@ -296,7 +296,7 @@
           "isVisible": true,
           "ofs": {
             "id": 106,
-            "name": "AUTO"
+            "name": "Auto"
           }
         },
         {
@@ -306,7 +306,7 @@
           "isVisible": false,
           "ofs": {
             "id": 107,
-            "name": "MANUAL"
+            "name": "Manual"
           }
         },
         {
@@ -316,7 +316,7 @@
           "isVisible": true,
           "ofs": {
             "id": 108,
-            "name": "ALL"
+            "name": "All"
           }
         },
         {
@@ -326,7 +326,7 @@
           "isVisible": false,
           "ofs": {
             "id": 109,
-            "name": "AUTO"
+            "name": "Auto"
           }
         },
         {
@@ -336,7 +336,7 @@
           "isVisible": true,
           "ofs": {
             "id": 110,
-            "name": "MANUAL"
+            "name": "Manual"
           }
         },
         {
@@ -346,7 +346,7 @@
           "isVisible": false,
           "ofs": {
             "id": 111,
-            "name": "ALL"
+            "name": "All"
           }
         },
         {
@@ -356,7 +356,7 @@
           "isVisible": true,
           "ofs": {
             "id": 112,
-            "name": "AUTO"
+            "name": "Auto"
           }
         },
         {
@@ -366,7 +366,7 @@
           "isVisible": false,
           "ofs": {
             "id": 113,
-            "name": "MANUAL"
+            "name": "Manual"
           }
         },
         {
@@ -376,7 +376,7 @@
           "isVisible": true,
           "ofs": {
             "id": 114,
-            "name": "ALL"
+            "name": "All"
           }
         },
         {
@@ -386,7 +386,7 @@
           "isVisible": false,
           "ofs": {
             "id": 115,
-            "name": "AUTO"
+            "name": "Auto"
           }
         },
         {
@@ -396,7 +396,7 @@
           "isVisible": true,
           "ofs": {
             "id": 116,
-            "name": "MANUAL"
+            "name": "Manual"
           }
         },
         {
@@ -406,7 +406,7 @@
           "isVisible": false,
           "ofs": {
             "id": 117,
-            "name": "ALL"
+            "name": "All"
           }
         }
       ]
